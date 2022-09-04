@@ -8,7 +8,7 @@ import {
     createUserDocFromAuth,
 } from '../../utils/firebase/firebase.utils';
 
-import './sign-up-form.styles.scss';
+import { SignUpContainer } from "./sign-up-form.styles";
 
 const defaultFormFields = {
     displayName: '',
@@ -44,19 +44,23 @@ const SignUpForm = () => {
             if (error.code === 'auth/email-already-in-use') {
                 alert('Cannot create user, email already in use');
             } else {
-                console.log('user creation encountered an error', error);
+                alert(
+                    `User creation encountered the following error: ${error.message}`
+                );
             }
         }
     };
 
     const handleChange = (event) => {
         const { name, value } = event.target;
-
-        setFormFields({ ...formFields, [name]: value });
+        setFormFields({
+            ...formFields,
+            [name]: value
+        });
     };
 
     return (
-        <div className='sign-up-container'>
+        <SignUpContainer>
             <h2>Don't have an account?</h2>
             <span>Sign up with your email and password</span>
             <form onSubmit={handleSubmit}>
@@ -97,7 +101,7 @@ const SignUpForm = () => {
                 />
                 <Button>Sign Up</Button>
             </form>
-        </div>
+        </SignUpContainer>
     );
 };
 

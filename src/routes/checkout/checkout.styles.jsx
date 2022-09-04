@@ -20,7 +20,7 @@ export const CheckoutHeader = styled.div`
 export const HeaderBlock = styled.div`
   text-transform: capitalize;
   width: 23%;
-
+  
   &:last-child {
     width: 8%;
   }
@@ -30,4 +30,7 @@ export const Total = styled.span`
   margin-top: 30px;
   margin-left: auto;
   font-size: 36px;
+  padding: .35rem;
+  border-radius: 4px;
+  border: 1px inset black;
 `

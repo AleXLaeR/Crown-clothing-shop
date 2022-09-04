@@ -1,28 +1,35 @@
-import './checkout-item.styles';
-import { useContext } from "react";
-import { CartContext } from "../../contexts/cart.context";
 import {
     Arrow,
     CheckoutItemContainer,
     CurrentQuantityValue,
     ImageContainer, Name, Price,
-    Quantity,
+    QuantityContainer,
     RemoveBtn,
 } from "./checkout-item.styles";
 
+import { useSelector, useDispatch } from "react-redux";
+import { selectCartItems } from "../../store-reduxcers/cart/cart.selector";
+
+import {
+    clearItemFromCart,
+    addItemToCart,
+    removeItemFromCart
+} from "../../store-reduxcers/cart/cart.action";
+
 const CheckoutItem = ({ cartItem }) => {
     const { name, imageUrl, price, quantity } = cartItem;
-    const {
-        clearItemFromCart,
-        addItemToCart,
-        removeItemFromCart
-    } = useContext(CartContext);
+    const cartItems = useSelector(selectCartItems);
 
-    const clearItemHandler = () => clearItemFromCart(cartItem);
+    const dispatch = useDispatch();
 
-    const addItemHandler = () => addItemToCart(cartItem);
+    const clearItemHandler = () =>
+        dispatch(clearItemFromCart(cartItems, cartItem));
 
-    const removeItemHandler = () => removeItemFromCart(cartItem);
+    const addItemHandler = () =>
+        dispatch(addItemToCart(cartItems, cartItem));
+
+    const removeItemHandler = () =>
+        dispatch(removeItemFromCart(cartItems, cartItem));
 
     return (
         <CheckoutItemContainer>
@@ -30,15 +37,13 @@ const CheckoutItem = ({ cartItem }) => {
                 <img src={imageUrl} alt={name} />
             </ImageContainer>
             <Name>{name}</Name>
-            <Quantity>
+            <QuantityContainer>
                 <Arrow onClick={removeItemHandler}>&#10094;</Arrow>
                 <CurrentQuantityValue>{quantity}</CurrentQuantityValue>
                 <Arrow onClick={addItemHandler}>&#10095;</Arrow>
-            </Quantity>
-            <Price>{price}</Price>
-            <RemoveBtn onClick={clearItemHandler}>
-                &#10005;
-            </RemoveBtn>
+            </QuantityContainer>
+            <Price>${price}</Price>
+            <RemoveBtn onClick={clearItemHandler}>&#10005;</RemoveBtn>
         </CheckoutItemContainer>
     );
 }

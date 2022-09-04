@@ -15,7 +15,7 @@ import {
     getDoc,
     setDoc,
     collection,
-    writeBatch,
+    // writeBatch,
     query,
     getDocs,
 } from 'firebase/firestore';
@@ -44,6 +44,7 @@ export const signInWithGooglePopup = () => signInWithPopup(
 
 export const db = getFirestore();
 
+/*
 export const addCollectionAndDocs = async (collectionKey, objectsToAdd) => {
     const collectionRef = collection(db, collectionKey);
     const batch = writeBatch(db);
@@ -55,19 +56,14 @@ export const addCollectionAndDocs = async (collectionKey, objectsToAdd) => {
 
     await batch.commit();
 }
+ */
 
 export const getCategoriesAndDocs = async (collectionKey) => {
     const collectionRef = collection(db, collectionKey);
     const aQuery = query(collectionRef);
 
     const querySnapshot = await getDocs(aQuery);
-    const categoryMap = querySnapshot.docs.reduce((acc, docSnap) => {
-        const { title, items } = docSnap.data();
-        acc[title.toLowerCase()] = items;
-        return acc;
-    }, {});
-
-    return categoryMap;
+    return querySnapshot.docs.map((docSnap) => docSnap.data());
 }
 
 export const createUserDocFromAuth = async (userAuth, additionalInformation = {}) => {
@@ -89,7 +85,7 @@ export const createUserDocFromAuth = async (userAuth, additionalInformation = {}
             ...additionalInformation,
         });
     } catch (error) {
-        console.log(`Error creating a user: ${error.message}`);
+        alert(`Error creating a user: ${error.message}`);
     }
     return userDocRef;
 }

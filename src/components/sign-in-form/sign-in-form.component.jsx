@@ -8,7 +8,7 @@ import {
     signInWithGooglePopup,
 } from '../../utils/firebase/firebase.utils';
 
-import './sign-in-form.styles.scss';
+import { SignInContainer, ButtonsContainer } from "./sign-in-form.styles";
 
 const defaultFormFields = {
     email: '',
@@ -19,13 +19,9 @@ const SignInForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const { email, password } = formFields;
 
-    const resetFormFields = () => {
-        setFormFields(defaultFormFields);
-    };
+    const resetFormFields = () => setFormFields(defaultFormFields);
 
-    const signInWithGoogle = async () => {
-        await signInWithGooglePopup();
-    };
+    const signInWithGoogle = async () => await signInWithGooglePopup();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -45,7 +41,7 @@ const SignInForm = () => {
     };
 
     return (
-        <div className='sign-in-container'>
+        <SignInContainer>
             <h2>Already have an account?</h2>
             <span>Sign in with your email and password</span>
             <form onSubmit={handleSubmit}>
@@ -57,7 +53,6 @@ const SignInForm = () => {
                     name='email'
                     value={email}
                 />
-
                 <FormInput
                     label='Password'
                     type='password'
@@ -66,7 +61,7 @@ const SignInForm = () => {
                     name='password'
                     value={password}
                 />
-                <div className='buttons-container'>
+                <ButtonsContainer>
                     <Button type='submit'>Sign In</Button>
                     <Button
                         buttonType={BUTTON_TYPE_CLASSES.google}
@@ -74,9 +69,9 @@ const SignInForm = () => {
                     >
                         Sign In With Google
                     </Button>
-                </div>
+                </ButtonsContainer>
             </form>
-        </div>
+        </SignInContainer>
     );
 };
 

@@ -17,6 +17,8 @@ export const ImageContainer = styled.div`
   img {
     width: 100%;
     height: 100%;
+    border-radius: 6px;
+    border: 1px solid black;
   }
 `
 
@@ -24,7 +26,7 @@ export const Name = styled.span`
   width: 23%;
 `
 
-export const Quantity = styled.span`
+export const QuantityContainer = styled.span`
   width: 23%;
   display: flex;
 `
