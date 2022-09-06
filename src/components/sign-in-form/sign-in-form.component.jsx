@@ -28,15 +28,16 @@ const SignInForm = () => {
 
         try {
             await signInAuthUserWithEmailAndPassword(email, password);
-            resetFormFields();
         } catch (error) {
             console.log('user sign in failed', error);
+        }
+        finally {
+            resetFormFields();
         }
     };
 
     const handleChange = (event) => {
         const { name, value } = event.target;
-
         setFormFields({ ...formFields, [name]: value });
     };
 

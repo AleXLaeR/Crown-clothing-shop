@@ -38,12 +38,18 @@ const CheckoutItem = ({ cartItem }) => {
             </ImageContainer>
             <Name>{name}</Name>
             <QuantityContainer>
-                <Arrow onClick={removeItemHandler}>&#10094;</Arrow>
+                <Arrow onClick={removeItemHandler}>
+                    &#10094;
+                </Arrow>
                 <CurrentQuantityValue>{quantity}</CurrentQuantityValue>
-                <Arrow onClick={addItemHandler}>&#10095;</Arrow>
+                <Arrow onClick={addItemHandler}>
+                    &#10095;
+                </Arrow>
             </QuantityContainer>
             <Price>${price}</Price>
-            <RemoveBtn onClick={clearItemHandler}>&#10005;</RemoveBtn>
+            <RemoveBtn onClick={clearItemHandler}>
+                &#10005;
+            </RemoveBtn>
         </CheckoutItemContainer>
     );
 }

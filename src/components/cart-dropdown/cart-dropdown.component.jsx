@@ -6,7 +6,7 @@ import CartItem from "../cart-item/cart-item.component";
 
 import { CartDropdownContainer, CartItems, EmptyMessage } from "./cart-dropdown.styles";
 
-import {selectCartItems, selectIsCartOpen} from "../../store-reduxcers/cart/cart.selector";
+import { selectCartItems, selectIsCartOpen } from "../../store-reduxcers/cart/cart.selector";
 import { setIsCartOpen } from "../../store-reduxcers/cart/cart.action";
 
 

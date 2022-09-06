@@ -1,3 +1,5 @@
+import { SignUpContainer } from "./sign-up-form.styles";
+
 import { useState } from 'react';
 
 import FormInput from '../form-input/form-input.component';
@@ -7,8 +9,6 @@ import {
     createAuthUserWithEmailAndPassword,
     createUserDocFromAuth,
 } from '../../utils/firebase/firebase.utils';
-
-import { SignUpContainer } from "./sign-up-form.styles";
 
 const defaultFormFields = {
     displayName: '',
@@ -53,10 +53,7 @@ const SignUpForm = () => {
 
     const handleChange = (event) => {
         const { name, value } = event.target;
-        setFormFields({
-            ...formFields,
-            [name]: value
-        });
+        setFormFields({ ...formFields, [name]: value });
     };
 
     return (

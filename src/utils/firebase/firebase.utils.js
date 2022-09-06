@@ -58,7 +58,7 @@ export const addCollectionAndDocs = async (collectionKey, objectsToAdd) => {
 }
  */
 
-export const getCategoriesAndDocs = async (collectionKey) => {
+export const getDocsFromCollection = async (collectionKey) => {
     const collectionRef = collection(db, collectionKey);
     const aQuery = query(collectionRef);
 
@@ -110,7 +110,7 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
     );
 }
 
-export const signOutUser = async () => signOut(auth);
+export const signOutUser = async () => await signOut(auth);
 
 export const onAuthStateChangeListener = (cb) =>
     onAuthStateChanged(auth, cb);
