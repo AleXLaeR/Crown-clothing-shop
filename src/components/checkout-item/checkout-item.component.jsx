@@ -46,7 +46,7 @@ const CheckoutItem = ({ cartItem }) => {
                     &#10095;
                 </Arrow>
             </QuantityContainer>
-            <Price>${price}</Price>
+            <Price>${price * quantity}</Price>
             <RemoveBtn onClick={clearItemHandler}>
                 &#10005;
             </RemoveBtn>

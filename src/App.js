@@ -22,7 +22,7 @@ const App = () => {
             }
             dispatch(setCurrentUser(user));
         })
-    ), []);
+    ), [dispatch]);
 
     return (
       <Routes>

@@ -10,7 +10,7 @@ const CategoryItem = ({ category }) => {
     return (
         <CategoryItemContainer>
             <BackgroundImage imageUrl={imageUrl} />
-            <CategoryBodyContainer>
+            <CategoryBodyContainer to={`/shop/${title.toLowerCase()}`}>
                 <h2>{title}</h2>
                 <p>Shop Now</p>
             </CategoryBodyContainer>
